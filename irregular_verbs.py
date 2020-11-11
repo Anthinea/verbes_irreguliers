@@ -8,7 +8,7 @@ class IrregularVerbs:
         self.premier = premier
         self.dernier = dernier
         self.nombre = int(nombre)
-        fic = open('/home/benoits/projets_python/verbes_irreguliers/verbes_irreguliers.txt', 'r')
+        fic = open('verbes_irreguliers.txt', 'r')
         lignes = [v[:-1] for v in fic.readlines()]
         liste_globale = []
         liste_verbe   = []
@@ -26,7 +26,7 @@ class IrregularVerbs:
             if self.dernier in v[3]:
                 self.fin = liste_globale.index(v)+1
         self.liste_verbes= liste_globale[self.debut:self.fin]
-        fichier = open('/home/benoits/projets_python/verbes_irreguliers/liste_verbes_irreguliers.txt', 'w')
+        fichier = open('liste_verbes_irreguliers.txt', 'w')
         for v in liste_globale:
             verb = "{0},{1},{2},{3}\n".format(v[0],v[1],v[2],v[3])
             fichier.write(verb)
@@ -186,12 +186,12 @@ class IrregularVerbs:
         now = time.localtime(time.time())
         year, month, day, hour, minute, second, weekday, yearday, daylight = now
         phrase = (("Lun ", "Mar ", "Mer ", "Jeu ", "Ven ", "Sam ", "Dim ")[weekday]," ",day, (" Janvier ", " Février ", " Mars ", " Avril ", " Mai ", " Juin ", " Juillet ", " Août ", " Septembre ", " Octobre ", " Novembre ", " Décembre ")[month]," ", year," ", hour," ", minute,":\t\t","{0} sur {1}.".format(self.score,self.total_points),'\n')
-        fichier_score = open("/home/benoits/projets_python/verbes_irreguliers/.fichier_score", "a")
+        fichier_score = open("fichier_score", "a")
         for p in phrase:
                     fichier_score.write(str(p))
         fichier_score.close()
         print("Partie enregistrée!")
-        fichier_score = open("/home/benoits/projets_python/verbes_irreguliers/.fichier_score", "r")
+        fichier_score = open("fichier_score", "r")
         f = fichier_score.read()
         print(f)
 
